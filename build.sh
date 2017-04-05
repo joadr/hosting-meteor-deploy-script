@@ -19,7 +19,8 @@ echo ""
 echo "====> Moving bundle..."
 echo ""
 # meteor build --architecture=os.linux.x86_64 /home/deploy/bundle --server-only --allow-superuser
-mv ./bundle/ /home/deploy/bundle/
+cd /home/deploy/bundle/
+wget https://github.com/joadr/hosting-meteor-deploy-script/raw/master/bundle/armatucleta.tar.gz
 echo ""
 echo "====> App built"
 echo ""
