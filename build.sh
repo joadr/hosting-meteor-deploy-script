@@ -19,7 +19,7 @@ echo ""
 echo "====> Moving bundle..."
 echo ""
 # meteor build --architecture=os.linux.x86_64 /home/deploy/bundle --server-only --allow-superuser
-mv bundle /home/deploy/bundle
+mv ./bundle/ /home/deploy/bundle/
 echo ""
 echo "====> App built"
 echo ""
