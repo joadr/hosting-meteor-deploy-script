@@ -18,11 +18,10 @@ meteor npm install > /dev/null
 echo ""
 echo "====> Moving bundle..."
 echo ""
-# meteor build --architecture=os.linux.x86_64 /home/deploy/bundle --server-only --allow-superuser
 ls /home/deploy
 mkdir /home/deploy/bundle
 cd /home/deploy/bundle
-wget https://github.com/joadr/hosting-meteor-deploy-script/raw/master/bundle/armatucleta.tar.gz
+wget $BUILD_BUNDLE
 echo ""
 echo "====> App built"
 echo ""
