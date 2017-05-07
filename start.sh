@@ -1,13 +1,6 @@
 #!/bin/sh
 set -e
 
-# Go to compiled app
-# cd /home/deploy/compiled/bundle
-# Set port
-# export PORT=80
-# Run app
-# nohup sudo -E meteor node main.js > /home/deploy/app.log 2>&1&
-
 echo ""
 echo "====> Starting Meteor Docker Image..."
 echo ""
@@ -28,9 +21,12 @@ echo ""
 echo "====> Starting app..."
 echo ""
 
-sleep 20s
-
+echo "Getting logs..."
 sudo docker logs meteor --tail=30
+
+echo "Checking deploy..."
+sh /home/deploy/script/check.sh
+sudo docker logs meteor
 
 echo ""
 echo "====> App started"
