@@ -4,18 +4,18 @@ set -e
 echo "Starting check deploy"
 
 DEPLOY_CHECK_PORT=80
-DEPLOY_CHECK_WAIT_TIME=60
-elaspsed=0
+DEPLOY_CHECK_WAIT_TRIES=13
+elaspsed=1
 
 while true; do
-  echo "Check deploy $elaspsed"
-  sleep 1
+  echo "Check deploy #$elaspsed..."
+  sleep 5
   elaspsed=$((elaspsed+1))
   curl --fail -L localhost:$DEPLOY_CHECK_PORT && exit 0
 
-  if [ $elaspsed -ge $DEPLOY_CHECK_WAIT_TIME ]; then
+  if [ $elaspsed -ge $DEPLOY_CHECK_WAIT_TRIES ]; then
     echo "Error starting app"
-    sudo docker logs meteor
+    sudo docker logs meteor --tail=100
     exit 1
   fi
 done
