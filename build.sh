@@ -1,11 +1,20 @@
 #!/bin/sh
 set -e
 
+echo "Auto detected script"
+
+DETECTED_METEOR_VERSION=$(bash /home/deploy/script/getMeteorVersion.sh)
+echo "Detected Meteor version \"$DETECTED_METEOR_VERSION\""
+
+
+FINAL_DOCKER_IMAGE=$(bash /home/deploy/script/getDockerImage.sh)
+echo "Using docker image \"$FINAL_DOCKER_IMAGE\""
+
 sh /home/deploy/script/prepare.sh
 
 # Go to app folder
 cd app
-cd $APP_LOCATION # Add an if here
+cd $APP_LOCATION
 
 # Install NPM Deps
 echo ""
